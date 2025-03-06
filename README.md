@@ -24,6 +24,7 @@ Ether – used to create an Ethernet frame.
 Srp – sends and receives packet at the Data Link layer (layer 2).
 
 `def scan_network(ip_range):`
+
 defining a function, where (ip_range) is the network range I want to scan.
 
 `arp_request = ARP(pdst=ip_range)`
