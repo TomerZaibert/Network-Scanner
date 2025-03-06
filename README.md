@@ -199,17 +199,26 @@ empty list to store all the detected open ports.
         sock.close()
     return open_ports`
 
-for each port that we find, we create a new socket using sock.socket(). <br>
-Socket.AF_INET means that we are using IPv4. <br>
-socket.SOCK_STREAM  specifies that we are using a TCP connection. I used TCP because it ensures reliable communication, it requires handshaking (SYN -> SYN-ACK -> ACK) to establish a connection, if the port is open it responds to the handshake, if it is closed the handshake is rejected or ignored. <br>
-Sock.settimeout(1) is used to ensure that if a device doesn’t respond in 1 second it is considered close to prevent the function from hanging on to unresponsive devices. <br>
-result = sock.connect_ex((ip, port)) <br>
-Connect_ex() – tries to create a connection using that target IP and port, returns 0 if the port is open. <br>
+for each port that we find, we create a new socket using sock.socket(). 
+
+Socket.AF_INET means that we are using IPv4. 
+
+socket.SOCK_STREAM  specifies that we are using a TCP connection. I used TCP because it ensures reliable communication, it requires handshaking (SYN -> SYN-ACK -> ACK) to establish a connection, if the port is open it responds to the handshake, if it is closed the handshake is rejected or ignored. 
+
+Sock.settimeout(1) is used to ensure that if a device doesn’t respond in 1 second it is considered close to prevent the function from hanging on to unresponsive devices. 
+
+result = sock.connect_ex((ip, port)) 
+
+Connect_ex() – tries to create a connection using that target IP and port, returns 0 if the port is open. 
+
 if result == 0: <br>
-    open_ports.append(port) <br>
-if the port is open, the port is added to the open_ports list. <br>
-sock.close() - The sock is closed to free system resources. <br>
-return open_ports - Returns the list of open ports. <br>
+    open_ports.append(port) 
+    
+if the port is open, the port is added to the open_ports list. 
+
+sock.close() - The sock is closed to free system resources. 
+
+return open_ports - Returns the list of open ports. 
 
 The printing of the results was modified to add the open ports to the table.
 
